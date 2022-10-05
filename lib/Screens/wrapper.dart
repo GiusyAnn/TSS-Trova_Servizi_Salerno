@@ -1,3 +1,4 @@
+import 'package:app_salerno/Screens/insidehome.dart';
 import 'package:flutter/material.dart';
 import 'package:app_salerno/Screens/wrapper.dart';
 import 'package:app_salerno/Beans/Utente.dart';
@@ -11,8 +12,12 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<Utente>(context);
-    print(user);
-    return Container();
+    print('Questo è l\'utente '+user.uid.toString());
+    if(user == null || user.uid == ''){
+      return MyApp();
+    } else {
+      return InsideHomePage(title: 'Home');
+    }
   }
 }
 

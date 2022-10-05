@@ -1,3 +1,4 @@
+import 'package:app_salerno/Screens/home.dart';
 import 'package:app_salerno/Services/auth.dart';
 import 'package:app_salerno/Beans/Utente.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class _AuthenticateState extends State<Authenticate> {
         backgroundColor: Colors.lightBlue,
         leading: IconButton(
           icon: Icon(FontAwesomeIcons.arrowLeft),
-          onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const MyApp()));},
+          onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));},
         ),
         title: Center(
             child: Text("Accesso")

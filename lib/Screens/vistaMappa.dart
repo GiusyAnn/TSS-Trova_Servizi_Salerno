@@ -1,3 +1,4 @@
+import 'package:app_salerno/Screens/home.dart';
 import 'package:app_salerno/Screens/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -61,7 +62,7 @@ class _vistaMappaState extends State<vistaMappa> {
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(FontAwesomeIcons.arrowLeft),
-            onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const MyApp()));},
+            onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));},
           ),
           title: Center(
               child: Text("Salerno")
