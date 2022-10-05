@@ -57,6 +57,7 @@ dev_dependencies:
   google_maps_flutter: ^2.2.1
   firebase_auth: ^3.11.1
   cloud_firestore: ^3.5.0
+  provider: ^6.0.3
 
 
 

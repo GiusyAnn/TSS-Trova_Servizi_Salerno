@@ -1,5 +1,4 @@
 import 'package:app_salerno/Beans/Utente.dart';
-import 'package:app_salerno/Screens/home.dart';
 import 'package:app_salerno/Screens/wrapper.dart';
 import 'package:app_salerno/Services/auth.dart';
 import 'package:app_salerno/vistaMappadue.dart';
@@ -8,31 +7,30 @@ import 'package:app_salerno/Screens/vistaMappa.dart';
 import 'package:app_salerno/Screens/authenticate/authenticate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app_salerno/Beans/Utente.dart';
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(Home());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return StreamProvider <Utente>.value(
+      value: AuthService().user,
+      initialData: Utente(uid: ''),
+      child: MaterialApp(
+        home: Wrapper(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
-
   }
-
 }
 
 class MyHomePage extends StatefulWidget {
@@ -123,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       side: BorderSide(width: 2.5, color:Color.fromRGBO(44, 77, 155, 1)),
                       primary: Color.fromRGBO(0, 169, 224, 1),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Home()));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappadue()));},
                     child: Text('Servizi',
                       style: TextStyle(
                           color: Colors.white,
