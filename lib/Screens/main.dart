@@ -1,10 +1,9 @@
 import 'package:app_salerno/Beans/Utente.dart';
-import 'package:app_salerno/Screens/home.dart';
-import 'package:app_salerno/Screens/wrapper.dart';
+import 'package:app_salerno/Screens/Home/home.dart';
+import 'package:app_salerno/Screens/Home/wrapper.dart';
 import 'package:app_salerno/Services/auth.dart';
-import 'package:app_salerno/vistaMappadue.dart';
 import 'package:flutter/material.dart';
-import 'package:app_salerno/Screens/vistaMappa.dart';
+import 'package:app_salerno/Screens/Maps/vistaMappa.dart';
 import 'package:app_salerno/Screens/authenticate/authenticate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';

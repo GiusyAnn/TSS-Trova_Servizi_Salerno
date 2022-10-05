@@ -1,4 +1,4 @@
-import 'package:app_salerno/Screens/home.dart';
+import 'package:app_salerno/Screens/Home/home.dart';
 import 'package:app_salerno/Services/auth.dart';
 import 'package:app_salerno/Beans/Utente.dart';
 import 'package:flutter/material.dart';
