@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "910138462776",
+    "project_id": "tss-trova-servizi-salerno",
+    "storage_bucket": "tss-trova-servizi-salerno.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910138462776:android:6ef6043a034752f1da0ccd",
+        "android_client_info": {
+          "package_name": "com.example.app_salerno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910138462776-ekqelb26fu8nhdp5kdm78g9sli5lb3jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhltrmn7UAFBg1NCWk82J6-MZwG0lf8I8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910138462776-ekqelb26fu8nhdp5kdm78g9sli5lb3jj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "910138462776-4prtpc2hn653674q0mr7jqap315v6emq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appSalerno"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
