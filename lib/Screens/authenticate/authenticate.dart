@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:app_salerno/Screens/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 class Authenticate extends StatefulWidget {
   const Authenticate({Key? key}) : super(key: key);
@@ -16,6 +19,12 @@ class Authenticate extends StatefulWidget {
 class _AuthenticateState extends State<Authenticate> {
 
   final AuthService _authService = AuthService();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  //text field state
+  String email = '';
+  String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -31,24 +40,52 @@ class _AuthenticateState extends State<Authenticate> {
             child: Text("Accesso")
         ),
       ),
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0 ),
-          child: ElevatedButton(
-            onPressed: () async{
-              dynamic result = await _authService.signInAnon();
-              if(result == null){
-                print('Errore nell\'autetiazione' );
-              } else {
-                print ('Accesso effetuato con successo');
-                print(result.uid);
-              }
-            },
-            child: Text('Entra in Anonimo'),
-          ),
-        ),
 
-      )
-    );
+      body: Container(
+          padding: EdgeInsets.symmetric(vertical: 120.0,horizontal: 50.0 ),
+          child: Form(
+             key: _formKey,
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 20.0,),
+                TextFormField(
+                  validator: (val) => val == '' ? 'Inserire un email ' : null,
+                onChanged: (val){
+                  setState(() {email = val;});
+                },
+                ),
+                SizedBox(height: 20.0,),
+                TextFormField(
+                  obscureText: true,
+                  validator: (val) =>  (val?.length)! < 6 ? 'Inserire una password maggiore di 6 caratteri ' : null,
+                  onChanged: (val){
+                    setState(() {password = val;});
+                  },
+                ),
+                SizedBox(height: 20.0,),
+                ElevatedButton(
+                  child: Text(
+                    'Accedi',
+                        style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()){
+                      print('CREDENZIALI VALIDE');
+                      dynamic result = await _authService.singInWithEmailAndPassword(email, password);
+                      if(result == null){
+                        setState(() => error = 'Inserire delle credenziali valide!');
+                      }
+                   }
+                    print('Email: '+email);
+                    print('Password: '+password);
+                  },
+                ),
+              ],
+            ),
+          ),
+          ),
+
+      );
+
   }
 }
