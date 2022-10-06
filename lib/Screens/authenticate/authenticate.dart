@@ -7,6 +7,7 @@ import 'package:app_salerno/Screens/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:app_salerno/Component/loading.dart';
 
 
 class Authenticate extends StatefulWidget {
@@ -20,6 +21,7 @@ class _AuthenticateState extends State<Authenticate> {
 
   final AuthService _authService = AuthService();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   //text field state
   String email = '';
@@ -28,7 +30,7 @@ class _AuthenticateState extends State<Authenticate> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
@@ -42,13 +44,21 @@ class _AuthenticateState extends State<Authenticate> {
       ),
 
       body: Container(
-          padding: EdgeInsets.symmetric(vertical: 120.0,horizontal: 50.0 ),
+          padding: EdgeInsets.symmetric(vertical: 100.0,horizontal: 50.0 ),
           child: Form(
              key: _formKey,
             child: Column(
               children: <Widget>[
                 SizedBox(height: 20.0,),
                 TextFormField(
+                  decoration: InputDecoration(
+                      hintText: 'Email',
+                      filled: true,
+                      fillColor: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide( color: Colors.lightBlueAccent.shade100, width: 2.0)
+                      )
+                  ),
                   validator: (val) => val == '' ? 'Inserire un email ' : null,
                 onChanged: (val){
                   setState(() {email = val;});
@@ -56,6 +66,14 @@ class _AuthenticateState extends State<Authenticate> {
                 ),
                 SizedBox(height: 20.0,),
                 TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide( color: Colors.lightBlueAccent.shade100, width: 2.0)
+                    )
+                  ),
                   obscureText: true,
                   validator: (val) =>  (val?.length)! < 6 ? 'Inserire una password maggiore di 6 caratteri ' : null,
                   onChanged: (val){
@@ -71,9 +89,15 @@ class _AuthenticateState extends State<Authenticate> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()){
                       print('CREDENZIALI VALIDE');
+                      setState(() {
+                        loading = true;
+                      });
                       dynamic result = await _authService.singInWithEmailAndPassword(email, password);
                       if(result == null){
-                        setState(() => error = 'Inserire delle credenziali valide!');
+                        setState(() {
+                          error = 'inserire delle credenziali valide!';
+                          loading = false;
+                        });
                       }
                    }
                     print('Email: '+email);
