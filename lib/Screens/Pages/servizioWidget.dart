@@ -47,7 +47,7 @@ class ServizioWidget extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Text(
-                        str.getname(),
+                        str.name,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 23,
@@ -76,7 +76,7 @@ class ServizioWidget extends StatelessWidget {
                                 padding: const EdgeInsets.all(0),
                                 child: OverflowBar(children: <Widget>[
                                   Text(
-                                    str.getaddress(),
+                                    str.address,
                                     overflow: TextOverflow.visible,
                                     style: TextStyle(
                                         color: Colors.black54,
@@ -99,18 +99,20 @@ class ServizioWidget extends StatelessWidget {
                                     color: Color(str.color), size: 35),
                               )),
                           //icon
-                          Container(
-                            alignment: Alignment.topLeft,
+                          Flexible(
                             child: Padding(
                                 padding: const EdgeInsets.all(0),
-                                child: Text(
-                                  str.getphone().toString(),
-                                  style: TextStyle(
-                                      color: Colors.black54,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal),
-                                )),
-                          ), //text
+                                child: OverflowBar(children: <Widget>[
+                                  Text(
+                                    str.phone,
+                                    overflow: TextOverflow.visible,
+                                    style: TextStyle(
+                                        color: Colors.black54,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ])),
+                          ),  //text
                         ],
                       ),
                     ), //Phone
@@ -125,18 +127,20 @@ class ServizioWidget extends StatelessWidget {
                                     color: Color(str.color), size: 35),
                               )),
                           //icon
-                          Container(
-                            alignment: Alignment.topLeft,
+                          Flexible(
                             child: Padding(
                                 padding: const EdgeInsets.all(0),
-                                child: Text(
-                                  str.getcategory(),
-                                  style: TextStyle(
-                                      color: Colors.black54,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal),
-                                )),
-                          ), //text
+                                child: OverflowBar(children: <Widget>[
+                                  Text(
+                                    str.categoria,
+                                    overflow: TextOverflow.visible,
+                                    style: TextStyle(
+                                        color: Colors.black54,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ])),
+                          ),  //text
                         ],
                       ),
                     ), //Category
@@ -151,18 +155,20 @@ class ServizioWidget extends StatelessWidget {
                                     color: Color(str.color), size: 35),
                               )),
                           //icon
-                          Container(
-                            alignment: Alignment.topLeft,
+                          Flexible(
                             child: Padding(
                                 padding: const EdgeInsets.all(0),
-                                child: Text(
-                                  str.getpage(),
-                                  style: TextStyle(
-                                      color: Colors.black54,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal),
-                                )),
-                          ), //text
+                                child: OverflowBar(children: <Widget>[
+                                  Text(
+                                    str.page,
+                                    overflow: TextOverflow.visible,
+                                    style: TextStyle(
+                                        color: Colors.black54,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ])),
+                          ),  //text
                         ],
                       ),
                     ), //Page
