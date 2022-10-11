@@ -1,35 +1,54 @@
 import 'dart:convert';
+import 'dart:ffi';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // import 'package:json_annotation/json_annotation.dart';
 
 //@JsonSerializable()
 class Struttura {
+  String id;
   String name;
   double lat;
   double long;
   String city;
   String address;
-  int phone;
+  String phone;
   String categoria;
   String page;
+  int color;
 
 
-  Struttura(this.name, this.lat, this.long, this.city, this.address,
-      this.phone, this.categoria, this.page);
+  Struttura(this.id, this.name, this.lat, this.long, this.city, this.address,
+      this.phone, this.categoria, this.page, this.color);
 
+  String getid(){return this.id;}
   String getname(){ return this.name; }
   String getcity(){ return this.city;}
   double getlat(){ return this.lat;}
   double getlong(){return this.long;}
   String getaddress(){return this.address;}
-  int getphone(){return this.phone;}
+  String getphone(){return this.phone;}
   String getcategory(){ return this.categoria;}
   String getpage() {return this.page;}
 
   @override
   String toString() {
-    return 'StrutturaPreview{_name: '+this.name+' \n $lat $long \n _address: '+this.address+'}';
+    return 'StrutturaPreview{_id: '+this.id+ '_name: '+this.name+' \n $lat $long \n _address: '+this.address+'}';
   }
+
+  static Struttura fromJson(Map<String, dynamic> json) {
+    return Struttura (
+    json['id'],
+    json['name'],
+    json['lat'],
+    json['long'],
+    json['city'],
+    json['address'],
+    json['phone'],
+    json['category'],
+    json['page'],
+    0xFFFFFFFF
+  ); }
 
 
  /*  Locale.convertFromJson(Map<String, dynamic> json)

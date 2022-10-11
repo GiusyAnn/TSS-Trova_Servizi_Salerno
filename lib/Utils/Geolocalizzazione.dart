@@ -1,6 +1,7 @@
 import 'package:geolocator/geolocator.dart';
 import 'dart:developer';
 import 'package:app_salerno/Utils/exceptions.dart';
+import 'package:app_salerno/Beans/StrutturaServizio.dart';
 
 class Geolocalizzazione{
   static Future<Position> determinePosition() async {
@@ -40,5 +41,7 @@ class Geolocalizzazione{
     }
     return currentLocation;
   }
+  
+
 
 }
