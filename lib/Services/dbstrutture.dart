@@ -15,10 +15,9 @@ class DatabaseService {
     print('Sono in GetStrutture');
     return strutturecollezione.snapshots().map(
         (snapshot) => snapshot.docs.map((doc) {
-          print('Esamino snapshot.docs.map() '+doc.get('name'));
+          print('Esamino '+doc.get('name'));
           var lt = doc.get('lat');
           var lg = doc.get('long');
-          //print('Lat Type: '+ lt.runtimeType.toString() +'\nLat Value :'+lt);
           Struttura test = Struttura('id', 'name', 40.680408, 14.77211, 'city', 'address', 'phone', 'categoria', 'page', 0);
           test.id = doc.id;
           test.name = doc.get('name');

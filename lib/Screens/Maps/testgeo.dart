@@ -18,7 +18,6 @@ class testgeo extends StatefulWidget {
 
 class _GeoListenPageState extends State<testgeo> {
   Geolocator geolocator = Geolocator();
-
   var userLocation;
 
   @override

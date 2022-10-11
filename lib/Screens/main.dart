@@ -1,6 +1,7 @@
 import 'package:app_salerno/Beans/Utente.dart';
 import 'package:app_salerno/Screens/Home/home.dart';
 import 'package:app_salerno/Screens/Home/wrapper.dart';
+import 'package:app_salerno/Screens/Pages/Servizi.dart';
 import 'package:app_salerno/Services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:app_salerno/Screens/Maps/vistaMappa.dart';
@@ -122,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       side: BorderSide(width: 2.5, color:Color.fromRGBO(44, 77, 155, 1)),
                       primary: Color.fromRGBO(0, 169, 224, 1),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Home()));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ServiceList()));},
                     child: Text('Servizi',
                       style: TextStyle(
                           color: Colors.white,
