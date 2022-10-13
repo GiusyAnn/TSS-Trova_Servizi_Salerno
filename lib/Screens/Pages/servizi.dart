@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:app_salerno/Beans/StrutturaServizio.dart';
 import 'package:provider/provider.dart';
 import 'package:app_salerno/Services/dbstrutture.dart';
-
+import 'package:app_salerno/Screens/Pages/scegliCategoria.dart';
 import 'listaServizi.dart';
 
 
@@ -36,7 +36,8 @@ class _ServiceListState extends State<ServiceList> {
                 onPressed: () {
                   showModalBottomSheet(
                       context: context,
-                      builder: (builder) => _scegliCategoria(context));
+                      builder: (builder) => ScegliCategoria()
+                  );
                 },
                 icon: Icon(FontAwesomeIcons.search, color: Colors.white),
                 label: Text(''),
@@ -48,65 +49,4 @@ class _ServiceListState extends State<ServiceList> {
     );
   }
 
-  Widget _scegliCategoria(BuildContext context) {
-
-    return Container(
-      color: Colors.white,
-      alignment: Alignment.center,
-      child: Center(
-          child: Column(
-            children: <Widget>[
-              //handing
-              Container(
-                  child: Container(
-                    alignment: Alignment.topCenter,
-                    width: double.infinity,
-                    color: Colors.blue,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text('Scegli Categoria',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 23,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  )), //handing
-
-              //contenuto
-              Container(
-                  child: Column(children: <Widget>[
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Icon(FontAwesomeIcons.houseChimney,
-                                    color: Colors.blue, size: 35),
-                              )),
-                          //icon
-
-                          Flexible(
-                            child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: OverflowBar(children: <Widget>[
-                                  Text('Categoria',
-                                    overflow: TextOverflow.visible,
-                                    style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ])),
-                          ), //text
-                        ],
-                      ),
-                    ), //Adderess//Page
-                  ])), //title
-            ],
-          )),
-    );
-  }
 }
