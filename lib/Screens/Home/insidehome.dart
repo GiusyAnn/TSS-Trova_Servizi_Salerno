@@ -8,7 +8,8 @@ import 'package:app_salerno/Screens/authenticate/authenticate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:app_salerno/Beans/Utente.dart';
+import 'package:app_salerno/Beans/Position.dart';
+import 'package:app_salerno/Screens/Pages/servizi.dart';
 
 
 void main() async{
@@ -103,7 +104,7 @@ class _InsideHomePageState extends State<InsideHomePage> {
                       side: BorderSide(width: 2.5, color:Color.fromRGBO(44, 77, 155, 1)),
                       primary: Color.fromRGBO(0, 169, 224, 1),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa()));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa(position: Position(40.683334, 14.766667),)));},
                     child: Text('Mappa',
                       style: TextStyle(
                           color: Colors.white,
@@ -124,7 +125,7 @@ class _InsideHomePageState extends State<InsideHomePage> {
                       side: BorderSide(width: 2.5, color:Color.fromRGBO(44, 77, 155, 1)),
                       primary: Color.fromRGBO(0, 169, 224, 1),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Home()));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ServiceList()));},
                     child: Text('Servizi',
                       style: TextStyle(
                           color: Colors.white,

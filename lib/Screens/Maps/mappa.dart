@@ -6,15 +6,20 @@ import 'package:app_salerno/Beans/StrutturaServizio.dart';
 import 'dart:developer';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:app_salerno/Beans/Position.dart';
 
 class Maps extends StatefulWidget {
-  const Maps({Key? key}) : super(key: key);
+
+  final Position position;
+  Maps({required this.position});
 
   @override
   State<Maps> createState() => _MapsState();
 }
 
 class _MapsState extends State<Maps> {
+  double zoomVal = 14.0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +64,29 @@ class _MapsState extends State<Maps> {
       marker.add(mk);
     }
 
+    var mk = Marker(
+      width: 80.0,
+      height: 80.0,
+      point: LatLng(40.778250, 14.781230),
+      builder: (ctx) => Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+              child:Icon(FontAwesomeIcons.locationDot, color: Colors.deepOrange, size: 40.0,)
+            ),
+            Container(
+              child:Text('IO', style: TextStyle(
+                color: Colors.deepOrange,
+                fontSize: 24.0,
+              ),)
+            )
+          ],
+        )
+      ),
+    );
+    marker.add(mk);
+
+
     return Center(
         child: Container(
             alignment: Alignment.center,
@@ -68,7 +96,7 @@ class _MapsState extends State<Maps> {
               Flexible(
                   child: FlutterMap(
                 options:
-                    MapOptions(center: LatLng(40.683334, 14.766667), zoom: 14),
+                    MapOptions(center: LatLng(widget.position.lat, widget.position.long), zoom: zoomVal),
                 layers: [
                   TileLayerOptions(
                       urlTemplate:
@@ -76,10 +104,11 @@ class _MapsState extends State<Maps> {
                       subdomains: ['a', 'b', 'c']),
                   MarkerLayerOptions(
                     markers: marker,
-                  )
+                  ),
                 ],
-              ))
-            ])));
+              )
+              ),
+            ], )));
   }
 
   Widget _description(BuildContext context, Struttura str) {
@@ -220,7 +249,7 @@ class _MapsState extends State<Maps> {
                                         fontWeight: FontWeight.normal),
                                   ),
                                 ])),
-                          ),  //text
+                          ),//text
                         ],
                       ),
                     ), //Page
@@ -229,4 +258,5 @@ class _MapsState extends State<Maps> {
           )),
     );
   }
+
 }

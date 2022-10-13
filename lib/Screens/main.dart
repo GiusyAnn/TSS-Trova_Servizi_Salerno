@@ -1,3 +1,4 @@
+import 'package:app_salerno/Beans/Position.dart';
 import 'package:app_salerno/Beans/Utente.dart';
 import 'package:app_salerno/Screens/Home/home.dart';
 import 'package:app_salerno/Screens/Home/wrapper.dart';
@@ -102,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       side: BorderSide(width: 2.5, color:Color.fromRGBO(44, 77, 155, 1)),
                       primary: Color.fromRGBO(0, 169, 224, 1),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa()));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa(position: Position(40.683334, 14.766667),)));},
                     child: Text('Mappa',
                       style: TextStyle(
                           color: Colors.white,
