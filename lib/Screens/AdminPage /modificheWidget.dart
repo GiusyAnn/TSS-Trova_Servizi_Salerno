@@ -25,12 +25,12 @@ class ModificheWidget extends StatelessWidget {
           onTap: () {
             showModalBottomSheet(
                 context: context,
-                builder: (builder) => _description(context, struttura));},
+                builder: (builder) => _decision(context, struttura));},
         ),
       ),
     );
   }
-  Widget _description(BuildContext context, Struttura str) {
+  Widget _decision(BuildContext context, Struttura str) {
 
     return Container(
       color: Colors.white,

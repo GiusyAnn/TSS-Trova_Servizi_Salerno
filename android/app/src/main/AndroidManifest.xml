@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app_salerno">
    <application
-        android:label="app_salerno"
+        android:label="TSS - Trova Servizi Salerno"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

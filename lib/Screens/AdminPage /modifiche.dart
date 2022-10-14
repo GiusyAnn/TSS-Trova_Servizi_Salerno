@@ -1,3 +1,4 @@
+import 'package:app_salerno/Screens/AdminPage%20/addService.dart';
 import 'package:app_salerno/Screens/AdminPage%20/modifichelist.dart';
 import 'package:app_salerno/Screens/AdminPage%20/scegliCategoriaModifiche.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +44,14 @@ class _ModificheState extends State<Modifiche> {
                   );
                 },
                 icon: Icon(FontAwesomeIcons.search, color: Colors.white),
+                label: Text(''),
+              ),
+
+              TextButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AggiungiServizio()));
+                },
+                icon: Icon(FontAwesomeIcons.plus, color: Colors.white),
                 label: Text(''),
               ),
             ],
