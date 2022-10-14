@@ -28,7 +28,6 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
   bool loading = false;
 
   //text field state
-  Struttura struttura = Struttura('id', 'name', 0, 0, 'city', 'address', 'phone', 'categoria', 'page', 0);
   String error = '';
   List <String> categorie = ['Servizio Amministrativo','Servizio Sanitario','Forze dell\'Ordine'];
 
@@ -43,7 +42,7 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
           onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));},
         ),
         title: Center(
-            child: Text("Accesso")
+            child: Text("Modifica Servizio")
         ),
       ),
 
@@ -66,10 +65,8 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                   validator: (val) => val == '' ? 'Inserire un nome ' : null,
                 onChanged: (val){
                   setState(() {
-                    if(val=='' || val==null){
-                      struttura.name = widget.struttura.name;
-                    } else {
-                      struttura.name = val;
+                    if(val!='' || val!=null){
+                      widget.struttura.name = val;
                     }
                   });
                 },
@@ -88,10 +85,8 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                   validator: (val) => val == '' ? 'Inserire un latitudine ' : null,
                   onChanged: (val){
                     setState(() {
-                      if(val=='' || val==null){
-                        struttura.lat = widget.struttura.lat;
-                      } else {
-                        struttura.lat = double.parse(val);
+                      if(val!='' || val!=null){
+                        widget.struttura.lat = double.parse(val);
                       }
                     });
                   },
@@ -109,11 +104,11 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire una longitudine' : null,
                   onChanged: (val){
-                    setState(() {if(val=='' || val==null){
-                      struttura.long = widget.struttura.long;
-                    } else {
-                      struttura.long = double.parse(val);
-                    }});
+                    setState(() {
+                      if(val!='' || val!=null){
+                        widget.struttura.long = double.parse(val);
+                      }
+                    });
                   },
                 ),
                 SizedBox(height: 10.0,),
@@ -129,11 +124,11 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un indirizzo ' : null,
                   onChanged: (val){
-                    setState(() {if(val=='' || val==null){
-                      struttura.address = widget.struttura.address;
-                    } else {
-                      struttura.address = val;
-                    }});
+                    setState(() {
+                      if(val!='' || val!=null){
+                      widget.struttura.address = val;
+                    }
+                    });
                   },
                 ),
                 SizedBox(height: 10.0,),
@@ -149,10 +144,8 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un numero di telefono ' : null,
                   onChanged: (val){
-                    setState(() {if(val=='' || val==null){
-                      struttura.phone = widget.struttura.phone;
-                    } else {
-                      struttura.phone = val;
+                    setState(() {if(val!='' || val!=null){
+                      widget.struttura.phone = val;
                     }});
                   },
                 ),
@@ -170,10 +163,8 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un sito Web ' : null,
                   onChanged: (val){
-                    setState(() {if(val=='' || val==null){
-                      struttura.page = widget.struttura.page;
-                    } else {
-                      struttura.page = val;
+                    setState(() {if(val!='' || val!=null){
+                      widget.struttura.page = val;
                     }});
                   },
                 ),
@@ -190,10 +181,8 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire una Città ' : null,
                   onChanged: (val){
-                    setState(() {if(val=='' || val==null){
-                      struttura.city = widget.struttura.city;
-                    } else {
-                      struttura.city = val;
+                    setState(() {if(val!='' || val!=null){
+                      widget.struttura.city = val;
                     }});
                   },
                 ),
@@ -212,7 +201,7 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                       );
                     }).toList(),
                     onChanged: (String? cat) {
-                      setState(() {struttura.categoria = cat!;});
+                      setState(() {widget.struttura.categoria = cat!;});
                     },
                   ),
                 ),
@@ -229,19 +218,9 @@ class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
                         style: TextStyle(color: Colors.white),
                   ),
                   onPressed: ()  {
-                    if (_formKey.currentState!.validate()){
-                      print('Alcuni campi inseriti non sono validi');
-                      setState(() {
-                        loading = true;
-                      });
-                      var result = databaseService.updateStrutturaData(struttura);
-                      if(result == false){
-                        setState(() {
-                          error = 'inserire una struttura con dettagli validi';
-                          loading = false;  });
-                      }
-                   }
-                    print(struttura.toString());
+                    print('INTERAZIONE PULSANTE MODIFICA! VOGLIAMO INSERIRE :'+widget.struttura.toString());
+                    databaseService.updateStrutturaData(widget.struttura);
+                    print(widget.struttura.toString());
                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Modifiche(cat: 'Tutti')));
                   },
                 ),

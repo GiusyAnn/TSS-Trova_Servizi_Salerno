@@ -42,7 +42,7 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
           onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));},
         ),
         title: Center(
-            child: Text("Accesso")
+            child: Text("Aggiungi Servizio")
         ),
       ),
 
