@@ -48,5 +48,23 @@ class DatabaseService {
     });
   }
 
+  void deleteStruttura(Struttura struttura) async {
+    await strutturecollezione.doc(struttura.id).delete();
+  }
+
+  //modifica di una Struttura passando il suo id e la struttura da inserire all'itnerno
+  void addStrutturaData(Struttura struttura) async {
+     await strutturecollezione.add({
+      'name': struttura.name,
+      'city': struttura.city,
+      'lat': struttura.lat,
+      'long': struttura.long,
+      'address': struttura.address,
+      'phone': struttura.phone,
+      'page': struttura.page,
+      'catehory': struttura.categoria
+    });
+  }
+
 
 }

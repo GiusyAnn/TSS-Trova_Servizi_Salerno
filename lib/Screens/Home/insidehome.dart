@@ -1,4 +1,5 @@
 import 'package:app_salerno/Beans/Utente.dart';
+import 'package:app_salerno/Screens/AdminPage%20/modifiche.dart';
 import 'package:app_salerno/Screens/Home/home.dart';
 import 'package:app_salerno/Screens/Home/wrapper.dart';
 import 'package:app_salerno/Services/auth.dart';
@@ -81,7 +82,7 @@ class _InsideHomePageState extends State<InsideHomePage> {
                       side: BorderSide(width: 2.5, color:Color.fromRGBO(44, 77, 155, 1)),
                       primary: Color.fromRGBO(0, 169, 224, 1),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Authenticate()));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Modifiche(cat: 'Tutti')));},
                     child: Text('Modifica',
                       style: TextStyle(
                           color: Colors.white,

@@ -102,6 +102,7 @@ class _AuthenticateState extends State<Authenticate> {
                    }
                     print('Email: '+email);
                     print('Password: '+password);
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));
                   },
                 ),
               ],
