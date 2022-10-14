@@ -1,7 +1,9 @@
+import 'package:app_salerno/Screens/Pages/Servizi.dart';
+import 'package:app_salerno/Screens/Pages/listaServizi.dart';
 import 'package:flutter/material.dart';
 
 class ScegliCategoria extends StatefulWidget {
-  const ScegliCategoria({Key? key}) : super(key: key);
+  late final String cat;
 
   @override
   State<ScegliCategoria> createState() => _ScegliCategoriaState();
@@ -10,7 +12,7 @@ class ScegliCategoria extends StatefulWidget {
 class _ScegliCategoriaState extends State<ScegliCategoria> {
 
   final _fromkey = GlobalKey<FormState>();
-  final List<String> categorie = ['Tutti','Servizio Amministrativo','Servizio Sanitario','Forze dell\'Ordine'];
+  List<String> categorie = ['Tutti','Servizio Amministrativo','Servizio Sanitario','Forze dell\'Ordine'];
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -34,10 +36,29 @@ class _ScegliCategoriaState extends State<ScegliCategoria> {
               )),
 
           SizedBox(height: 20.0,),
+
           //DropDown
           Container(
-
+          padding: EdgeInsets.symmetric(vertical: 100.0,horizontal: 50.0 ),
+          child: DropdownButtonFormField<String>(
+            value: categorie.first,
+            elevation: 16,
+            style: const TextStyle(color: Colors.blue),
+            items: categorie.map<DropdownMenuItem<String>>((String cat) {
+              return DropdownMenuItem<String>(
+              value: cat,
+              child: Text(cat),
+              );
+            }).toList(),
+            onChanged: (String? cat) {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ServiceList(cat: cat.toString())));
+              });
+            },
           ),
+          ),
+
+          SizedBox(height: 20.0,),
 
           //Bottone Check
           ElevatedButton(

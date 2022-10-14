@@ -10,7 +10,8 @@ import 'listaServizi.dart';
 
 
 class ServiceList extends StatefulWidget {
-  const ServiceList({Key? key}) : super(key: key);
+  final String cat;
+  ServiceList({required this.cat});
 
   @override
   State<ServiceList> createState() => _ServiceListState();
@@ -44,7 +45,7 @@ class _ServiceListState extends State<ServiceList> {
               ),
             ],
           ),
-          body: ListaServizi()
+          body: ListaServizi(cat: widget.cat)
       ),
     );
   }

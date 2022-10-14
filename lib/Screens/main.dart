@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       side: BorderSide(width: 2.5, color:Color.fromRGBO(44, 77, 155, 1)),
                       primary: Color.fromRGBO(0, 169, 224, 1),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ServiceList()));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ServiceList(cat:'Tutti')));},
                     child: Text('Servizi',
                       style: TextStyle(
                           color: Colors.white,

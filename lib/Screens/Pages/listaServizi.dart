@@ -10,6 +10,9 @@ import 'servizioWidget.dart';
 
 
 class ListaServizi extends StatefulWidget {
+  final String cat;
+  ListaServizi({required this.cat});
+
   @override
   State<ListaServizi> createState() => _ListaServiziState();
 }
@@ -18,7 +21,7 @@ class _ListaServiziState extends State<ListaServizi> {
   @override
   Widget build(BuildContext context) {
     final lista = Provider.of<List<Struttura>>(context);
-    lista.forEach((x) { print(x.name); });
+    List<Struttura> finallist = [];
     lista.forEach((x) {
       print('For Struttura: struttura :'+x.name);
 
@@ -33,9 +36,21 @@ class _ListaServiziState extends State<ListaServizi> {
         break;
       }
     });
-    return ListView.builder(itemCount: lista.length,
+
+    if(widget.cat=='Tutti'){
+      finallist = lista;
+    } else {
+      lista.forEach((x) {
+        if (widget.cat == x.categoria) {
+          finallist.add(x);
+        }
+      });
+    }
+
+
+    return ListView.builder(itemCount: finallist.length,
     itemBuilder: (context, index){
-      return ServizioWidget(struttura: lista[index]);
+      return ServizioWidget(struttura: finallist[index]);
     });
   }
 }
