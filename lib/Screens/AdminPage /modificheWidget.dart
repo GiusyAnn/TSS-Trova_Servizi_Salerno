@@ -1,11 +1,18 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:app_salerno/Beans/StrutturaServizio.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:app_salerno/Services/dbstrutture.dart';
+import 'modifiche.dart';
+import 'updateService.dart';
 
 class ModificheWidget extends StatelessWidget {
 
   final Struttura struttura;
   ModificheWidget({required this.struttura});
+
+  final DatabaseService databaseService = DatabaseService();
 
 
 
@@ -171,10 +178,95 @@ class ModificheWidget extends StatelessWidget {
                           ),  //text
                         ],
                       ),
-                    ), //Page
+                    ),
+
+                    SizedBox(height: 20.0,),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 50.0 ),
+                      child: Row(
+                        children: <Widget>[
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
+                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                              minimumSize: Size(150, 50),
+                            ),
+                            child: Text(
+                              'Modifica',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: ()  {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ModificaDatiServizio(struttura : struttura)));
+                            },
+                          ),
+
+                          SizedBox(width: 10.0,),
+                          //icon
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
+                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                              minimumSize: Size(150, 50),
+                              backgroundColor: Colors.red[300],
+                            ),
+                            child: Text(
+                              'Rimuovi',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: ()  {
+                              final dialogContextCompleter = Completer<BuildContext>();
+                              showDialog<void>(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext dialogContext) {
+                                  if(!dialogContextCompleter.isCompleted) {
+                                    dialogContextCompleter.complete(dialogContext);
+                                  }
+                                  return AlertDialog(
+                                    content: Text('Sicuro di voler cancellare la struttura'),
+                                    actions: [
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
+                                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                                          minimumSize: Size(60, 40),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.pop(dialogContext,false);
+                                        },
+                                        child: Text('Annulla Cancellazione'),
+                                      ),
+
+                                      SizedBox(height: 10.0, width: 10.0,),
+
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
+                                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                                          minimumSize: Size(60, 40),
+                                          backgroundColor: Colors.red[300],
+                                        ),
+                                        onPressed: () {
+                                          databaseService.deleteStruttura(struttura);
+                                          Navigator.pop(dialogContext,false);
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Modifiche(cat: 'Tutti')));
+                                        },
+                                        child: Text('Conferma Cancellazione'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              },
+                          ),//text
+                        ],
+                      ),
+                    ),//Page
                   ])), //title
             ],
           )),
     );
   }
+
 }

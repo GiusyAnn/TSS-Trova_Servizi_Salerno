@@ -26,7 +26,7 @@ class _MapsState extends State<Maps> {
     final lst = Provider.of<List<Struttura>>(context);
 
 
-    print('Sono in Mappa \n Ho ottenuto: '+lst.toString());
+
     lst.forEach((x) {
       print('For Struttura: struttura :'+x.name);
 

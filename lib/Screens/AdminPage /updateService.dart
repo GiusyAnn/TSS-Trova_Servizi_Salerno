@@ -13,14 +13,15 @@ import 'package:app_salerno/Component/loading.dart';
 import 'package:app_salerno/Services/dbstrutture.dart';
 
 
-class AggiungiServizio extends StatefulWidget {
-  const AggiungiServizio({Key? key}) : super(key: key);
+class ModificaDatiServizio extends StatefulWidget {
+  final Struttura struttura;
+  ModificaDatiServizio({required this.struttura});
 
   @override
-  State<AggiungiServizio> createState() => _AggiungiServizioState();
+  State<ModificaDatiServizio> createState() => _ModificaDatiServizioState();
 }
 
-class _AggiungiServizioState extends State<AggiungiServizio> {
+class _ModificaDatiServizioState extends State<ModificaDatiServizio> {
 
   final DatabaseService databaseService = DatabaseService();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -55,7 +56,7 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                 SizedBox(height: 10.0,),
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Nome',
+                      hintText: widget.struttura.name,
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
@@ -64,14 +65,20 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un nome ' : null,
                 onChanged: (val){
-                  setState(() {struttura.name = val;});
+                  setState(() {
+                    if(val=='' || val==null){
+                      struttura.name = widget.struttura.name;
+                    } else {
+                      struttura.name = val;
+                    }
+                  });
                 },
                 ),
                 SizedBox(height: 10.0,),
 
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'lat',
+                      hintText: widget.struttura.lat.toString(),
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
@@ -80,14 +87,20 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un latitudine ' : null,
                   onChanged: (val){
-                    setState(() {struttura.lat = double.parse(val);});
+                    setState(() {
+                      if(val=='' || val==null){
+                        struttura.lat = widget.struttura.lat;
+                      } else {
+                        struttura.lat = double.parse(val);
+                      }
+                    });
                   },
                 ),
                 SizedBox(height: 10.0,),
 
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Long',
+                      hintText: widget.struttura.long.toString(),
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
@@ -96,14 +109,18 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire una longitudine' : null,
                   onChanged: (val){
-                    setState(() {struttura.long = double.parse(val);});
+                    setState(() {if(val=='' || val==null){
+                      struttura.long = widget.struttura.long;
+                    } else {
+                      struttura.long = double.parse(val);
+                    }});
                   },
                 ),
                 SizedBox(height: 10.0,),
 
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Indirizzo',
+                      hintText: widget.struttura.address,
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
@@ -112,14 +129,18 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un indirizzo ' : null,
                   onChanged: (val){
-                    setState(() {struttura.address = val;});
+                    setState(() {if(val=='' || val==null){
+                      struttura.address = widget.struttura.address;
+                    } else {
+                      struttura.address = val;
+                    }});
                   },
                 ),
                 SizedBox(height: 10.0,),
 
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Telefono',
+                      label: Text(widget.struttura.phone),
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
@@ -128,7 +149,11 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un numero di telefono ' : null,
                   onChanged: (val){
-                    setState(() {struttura.phone = val;});
+                    setState(() {if(val=='' || val==null){
+                      struttura.phone = widget.struttura.phone;
+                    } else {
+                      struttura.phone = val;
+                    }});
                   },
                 ),
                 SizedBox(height: 10.0,),
@@ -136,7 +161,7 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
 
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Sito Web',
+                      hintText: widget.struttura.page,
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
@@ -145,14 +170,18 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire un sito Web ' : null,
                   onChanged: (val){
-                    setState(() {struttura.page = val;});
+                    setState(() {if(val=='' || val==null){
+                      struttura.page = widget.struttura.page;
+                    } else {
+                      struttura.page = val;
+                    }});
                   },
                 ),
                 SizedBox(height: 10.0,),
 
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Città',
+                      hintText: widget.struttura.city,
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
@@ -161,7 +190,11 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                   ),
                   validator: (val) => val == '' ? 'Inserire una Città ' : null,
                   onChanged: (val){
-                    setState(() {struttura.city = val;});
+                    setState(() {if(val=='' || val==null){
+                      struttura.city = widget.struttura.city;
+                    } else {
+                      struttura.city = val;
+                    }});
                   },
                 ),
                 SizedBox(height: 10.0,),
@@ -169,7 +202,7 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 50.0 ),
                   child: DropdownButtonFormField<String>(
-                    value: categorie.first,
+                    value: widget.struttura.categoria,
                     elevation: 16,
                     style: const TextStyle(color: Colors.blue),
                     items: categorie.map<DropdownMenuItem<String>>((String cat) {
@@ -186,8 +219,13 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
 
                 SizedBox(height: 10.0,),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                    minimumSize: Size(60, 40),
+                  ),
                   child: Text(
-                    'Aggiungi',
+                    'Modifica',
                         style: TextStyle(color: Colors.white),
                   ),
                   onPressed: ()  {
@@ -196,7 +234,7 @@ class _AggiungiServizioState extends State<AggiungiServizio> {
                       setState(() {
                         loading = true;
                       });
-                      var result = databaseService.addStrutturaData(struttura);
+                      var result = databaseService.updateStrutturaData(struttura);
                       if(result == false){
                         setState(() {
                           error = 'inserire una struttura con dettagli validi';

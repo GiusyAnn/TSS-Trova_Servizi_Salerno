@@ -36,7 +36,9 @@ class DatabaseService {
 
   //modifica di una Struttura passando il suo id e la struttura da inserire all'itnerno
   Future updateStrutturaData(Struttura struttura) async {
-    return await strutturecollezione.doc(struttura.id).set({
+    print('FUNZIONE MODIFICA!');
+    print(struttura.toString());
+     await strutturecollezione.doc(struttura.id).update({
       'name': struttura.name,
       'city': struttura.city,
       'lat': struttura.lat,
@@ -46,6 +48,7 @@ class DatabaseService {
       'page': struttura.page,
       'category': struttura.categoria
     });
+     return true;
   }
 
   void deleteStruttura(Struttura struttura) async {

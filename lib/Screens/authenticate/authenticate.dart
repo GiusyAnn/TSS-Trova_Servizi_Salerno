@@ -39,12 +39,12 @@ class _AuthenticateState extends State<Authenticate> {
           onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));},
         ),
         title: Center(
-            child: Text("Accesso")
+            child: Text("Accedi")
         ),
       ),
 
-      body: Container(
-          padding: EdgeInsets.symmetric(vertical: 100.0,horizontal: 50.0 ),
+      body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 250.0,horizontal: 50.0 ),
           child: Form(
              key: _formKey,
             child: Column(
@@ -82,6 +82,11 @@ class _AuthenticateState extends State<Authenticate> {
                 ),
                 SizedBox(height: 20.0,),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                    minimumSize: Size(60, 40),
+                  ),
                   child: Text(
                     'Accedi',
                         style: TextStyle(color: Colors.white),
