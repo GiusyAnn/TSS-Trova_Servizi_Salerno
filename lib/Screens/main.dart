@@ -2,6 +2,7 @@ import 'package:app_salerno/Beans/Position.dart';
 import 'package:app_salerno/Beans/Utente.dart';
 import 'package:app_salerno/Screens/Home/home.dart';
 import 'package:app_salerno/Screens/Home/wrapper.dart';
+import 'package:app_salerno/Screens/Maps/testgeo.dart';
 import 'package:app_salerno/Screens/Pages/Servizi.dart';
 import 'package:app_salerno/Services/auth.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                       minimumSize: Size(290, 60),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa(position: Position(40.683334, 14.766667),)));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa(position: Posizione(40.683334, 14.766667),)));},
                     child: Text('Mappa',
                       style: TextStyle(
                           color: Colors.white,

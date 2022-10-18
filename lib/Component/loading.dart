@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:app_salerno/Beans/Position.dart';
 
 class Loading extends StatelessWidget{
   @override
@@ -13,5 +14,37 @@ class Loading extends StatelessWidget{
         ),
       ),
     );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Posizione getLocation(){
+    Posizione pos= Posizione(40.774464,14.789729);
+    return pos;
   }
 }

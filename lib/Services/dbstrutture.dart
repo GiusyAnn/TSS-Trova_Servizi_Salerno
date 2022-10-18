@@ -1,7 +1,6 @@
 
 import 'package:app_salerno/Beans/StrutturaServizio.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:app_salerno/Utils/Geolocalizzazione.dart';
 
 class DatabaseService {
 

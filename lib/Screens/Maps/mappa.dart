@@ -1,3 +1,4 @@
+import 'package:app_salerno/Component/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -10,7 +11,7 @@ import 'package:app_salerno/Beans/Position.dart';
 
 class Maps extends StatefulWidget {
 
-  final Position position;
+  final Posizione position;
   Maps({required this.position});
 
   @override
@@ -64,10 +65,12 @@ class _MapsState extends State<Maps> {
       marker.add(mk);
     }
 
+    Posizione pos = Loading().getLocation();
+
     var mk = Marker(
       width: 80.0,
       height: 80.0,
-      point: LatLng(40.778250, 14.781230),
+      point: LatLng(pos.lat,pos.long),
       builder: (ctx) => Container(
         child: Column(
           children: <Widget>[

@@ -1,6 +1,7 @@
-class Position{
+class Posizione{
   double lat;
   double long;
 
-  Position(this.lat, this.long);
+  Posizione(this.lat, this.long);
+
 }

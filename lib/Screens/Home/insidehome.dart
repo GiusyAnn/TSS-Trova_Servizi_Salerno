@@ -101,7 +101,7 @@ class _InsideHomePageState extends State<InsideHomePage> {
                       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                       minimumSize: Size(290, 60),
                     ),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa(position: Position(40.683334, 14.766667),)));},
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>vistaMappa(position: Posizione(40.683334, 14.766667),)));},
                     child: Text('Mappa',
                       style: TextStyle(
                           color: Colors.white,

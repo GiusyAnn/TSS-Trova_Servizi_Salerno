@@ -6,12 +6,19 @@ import 'package:provider/provider.dart';
 import 'package:app_salerno/Services/dbstrutture.dart';
 import 'mappa.dart';
 import 'package:app_salerno/Beans/Position.dart';
+import 'dart:developer';
+import 'package:geolocator/geolocator.dart';
+import 'dart:async';
+import 'package:app_salerno/Component/loading.dart';
+
 
 
 
 class vistaMappa extends StatefulWidget {
-  final Position position;
+  final Posizione position;
   vistaMappa({required this.position});
+
+  var userLocation;
 
 
 
@@ -37,11 +44,10 @@ class _vistaMappaState extends State<vistaMappa> {
               ),
               actions: <Widget>[
                 TextButton.icon(
-                    onPressed: (){
-                      widget.position.lat = 40.778250;
-                      widget.position.long = 14.781230;
-                      print('Aggiorno il valore della posizione con :'+widget.position.lat.toString()+'   '+widget.position.long.toString());
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> vistaMappa(position : widget.position)));
+                    onPressed: ()  {
+                      Posizione position = Loading().getLocation();
+                      print('Aggiorno il valore della posizione con :'+position.lat.toString()+'   '+position.long.toString());
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> vistaMappa(position : position)));
                     },
                     icon: Icon(FontAwesomeIcons.locationDot, color: Colors.white), 
                     label: Text('Vicino a me',
@@ -57,6 +63,17 @@ class _vistaMappaState extends State<vistaMappa> {
     );
   }
 
+
+  Future<Position> getLocation() async {
+    var currentLocation;
+    try {
+      currentLocation = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.best);
+    } catch (e) {
+      currentLocation = null;
+    }
+    return currentLocation;
+  }
 
 
 }
