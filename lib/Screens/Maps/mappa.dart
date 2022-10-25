@@ -8,6 +8,8 @@ import 'dart:developer';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app_salerno/Beans/Position.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Maps extends StatefulWidget {
 
@@ -242,16 +244,15 @@ class _MapsState extends State<Maps> {
                           Flexible(
                             child: Padding(
                                 padding: const EdgeInsets.all(0),
-                                child: OverflowBar(children: <Widget>[
-                                  Text(
-                                    str.page,
-                                    overflow: TextOverflow.visible,
-                                    style: TextStyle(
-                                        color: Colors.black54,
+                                child:new InkWell(
+                                    child: new Text('Sito Web',
+                                      style: TextStyle(
+                                        color: Colors.blueAccent,
                                         fontSize: 18,
                                         fontWeight: FontWeight.normal),
-                                  ),
-                                ])),
+                                    ),
+                                    onTap: () => launch(str.page)
+                                ),),
                           ),//text
                         ],
                       ),
