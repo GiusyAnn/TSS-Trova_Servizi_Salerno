@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:app_salerno/Beans/StrutturaServizio.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class ServizioWidget extends StatelessWidget {
 
   final Struttura struttura;
@@ -158,16 +161,15 @@ class ServizioWidget extends StatelessWidget {
                           Flexible(
                             child: Padding(
                                 padding: const EdgeInsets.all(0),
-                                child: OverflowBar(children: <Widget>[
-                                  Text(
-                                    str.page,
-                                    overflow: TextOverflow.visible,
-                                    style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ])),
+                                child: new InkWell(
+    child: new Text('Sito Web',
+    style: TextStyle(
+    color: Colors.blueAccent,
+    fontSize: 18,
+    fontWeight: FontWeight.normal),
+    ),
+    onTap: () => launch(str.page)
+    )),
                           ),  //text
                         ],
                       ),

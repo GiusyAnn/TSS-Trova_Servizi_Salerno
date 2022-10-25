@@ -7,6 +7,9 @@ import 'package:app_salerno/Services/dbstrutture.dart';
 import 'modifiche.dart';
 import 'updateService.dart';
 
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class ModificheWidget extends StatelessWidget {
 
   final Struttura struttura;
@@ -165,25 +168,24 @@ class ModificheWidget extends StatelessWidget {
                           Flexible(
                             child: Padding(
                                 padding: const EdgeInsets.all(0),
-                                child: OverflowBar(children: <Widget>[
-                                  Text(
-                                    str.page,
-                                    overflow: TextOverflow.visible,
-                                    style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ])),
+                                child: new InkWell(
+    child: new Text('Sito Web',
+    style: TextStyle(
+    color: Colors.blueAccent,
+    fontSize: 18,
+    fontWeight: FontWeight.normal),
+    ),
+    onTap: () => launch(str.page)
+    )),
                           ),  //text
                         ],
                       ),
                     ),
 
-                    SizedBox(height: 20.0,),
+                    SizedBox(height: 7.0,),
 
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 50.0 ),
+                      padding: EdgeInsets.symmetric(vertical: 5.0,horizontal: 25.0 ),
                       child: Row(
                         children: <Widget>[
                           ElevatedButton(
@@ -201,7 +203,7 @@ class ModificheWidget extends StatelessWidget {
                             },
                           ),
 
-                          SizedBox(width: 10.0,),
+                          SizedBox(width: 5.0,),
                           //icon
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(

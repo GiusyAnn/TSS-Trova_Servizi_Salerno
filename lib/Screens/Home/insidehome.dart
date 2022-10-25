@@ -63,9 +63,9 @@ class _InsideHomePageState extends State<InsideHomePage> {
             //  ),
             //),
               alignment: Alignment.center,
-              padding: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(25),
               child: Column (children: [
-                SizedBox(height: 30),
+                SizedBox(height: 20),
                 Image(
                     image:AssetImage('assets/logoSalerno.png'
                         ''),
@@ -73,7 +73,7 @@ class _InsideHomePageState extends State<InsideHomePage> {
                     width: 350
                 ),
 
-                SizedBox(height: 50),
+                SizedBox(height: 20),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
@@ -132,7 +132,7 @@ class _InsideHomePageState extends State<InsideHomePage> {
                     )
                 ),
 
-                SizedBox(height: 65),
+                SizedBox(height: 35),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0),),
