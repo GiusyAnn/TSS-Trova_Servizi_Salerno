@@ -75,7 +75,7 @@ class ModificheWidget extends StatelessWidget {
                           Container(
                               alignment: Alignment.topLeft,
                               child: Padding(
-                                padding: const EdgeInsets.all(20.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Icon(FontAwesomeIcons.locationDot,
                                     color: Color(str.color), size: 35),
                               )),
@@ -104,7 +104,7 @@ class ModificheWidget extends StatelessWidget {
                           Container(
                               alignment: Alignment.topLeft,
                               child: Padding(
-                                padding: const EdgeInsets.all(20.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Icon(FontAwesomeIcons.phone,
                                     color: Color(str.color), size: 35),
                               )),
@@ -132,7 +132,7 @@ class ModificheWidget extends StatelessWidget {
                           Container(
                               alignment: Alignment.topLeft,
                               child: Padding(
-                                padding: const EdgeInsets.all(20.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Icon(FontAwesomeIcons.houseChimney,
                                     color: Color(str.color), size: 35),
                               )),
@@ -160,7 +160,7 @@ class ModificheWidget extends StatelessWidget {
                           Container(
                               alignment: Alignment.topLeft,
                               child: Padding(
-                                padding: const EdgeInsets.all(20.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Icon(FontAwesomeIcons.globe,
                                     color: Color(str.color), size: 35),
                               )),
@@ -169,14 +169,14 @@ class ModificheWidget extends StatelessWidget {
                             child: Padding(
                                 padding: const EdgeInsets.all(0),
                                 child: new InkWell(
-    child: new Text('Sito Web',
-    style: TextStyle(
-    color: Colors.blueAccent,
-    fontSize: 18,
-    fontWeight: FontWeight.normal),
-    ),
-    onTap: () => launch(str.page)
-    )),
+                            child: new Text('Sito Web',
+                            style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
+                            ),
+                            onTap: () => launch(str.page)
+                            )),
                           ),  //text
                         ],
                       ),
@@ -185,7 +185,7 @@ class ModificheWidget extends StatelessWidget {
                     SizedBox(height: 7.0,),
 
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 5.0,horizontal: 25.0 ),
+                      padding: EdgeInsets.symmetric(vertical: 5.0,horizontal: 20.0 ),
                       child: Row(
                         children: <Widget>[
                           ElevatedButton(

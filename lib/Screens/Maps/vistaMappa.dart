@@ -18,6 +18,7 @@ class vistaMappa extends StatefulWidget {
   final Posizione position;
   vistaMappa({required this.position});
 
+  Geolocator geolocator = Geolocator();
   var userLocation;
 
 
@@ -69,6 +70,7 @@ class _vistaMappaState extends State<vistaMappa> {
     try {
       currentLocation = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.best);
+      print("STAMPO LA MIA POSIZIONE!"+currentLocation.latitude.toString()+" "+currentLocation.longitudine.toString());
     } catch (e) {
       currentLocation = null;
     }

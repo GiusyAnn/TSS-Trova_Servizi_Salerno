@@ -103,11 +103,12 @@ class _AuthenticateState extends State<Authenticate> {
                           error = 'inserire delle credenziali valide!';
                           loading = false;
                         });
+                      }else{
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));
                       }
                    }
                     print('Email: '+email);
                     print('Password: '+password);
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Home()));
                   },
                 ),
               ],
